@@ -1,0 +1,72 @@
+{
+  "status": "tests_passed_npm_authentication_pending",
+  "checks": {
+    "unit_tests": {
+      "status": "passed",
+      "count": 18
+    },
+    "host_integration": {
+      "status": "passed",
+      "host": "@deepseek-ai/dsh@0.2.2-rc.1",
+      "model_mode": "deterministic_fixture",
+      "source": "cleanly installed tarball"
+    },
+    "bat20_replay": {
+      "status": "passed",
+      "new_model_inference": false,
+      "actual_python_calls": 4,
+      "recorded_responses": 9
+    },
+    "bat20_numeric_verification": {
+      "status": "passed",
+      "method": "independent recomputation from CSV inputs"
+    },
+    "atif_validation": {
+      "status": "passed",
+      "validator": "harbor==0.26.0",
+      "format": "ATIF-v1.0",
+      "validated_runs": [
+        "historical_response_replay",
+        "fresh_live_model"
+      ]
+    },
+    "clean_tarball_install": {
+      "status": "passed",
+      "method": "npm local tgz install + real Harness component activation/execution/unload"
+    },
+    "live_model_run": {
+      "status": "passed",
+      "endpoint": "https://api.deepseek.com",
+      "model": "deepseek-flash",
+      "new_model_inference": true,
+      "elapsed_seconds": 67.812,
+      "model_requests": 8,
+      "actual_python_calls": 6,
+      "observed_tool_errors": 0,
+      "final_answer": "FINAL ANSWER: CIGS,no",
+      "test_target": "cleanly installed npm tarball"
+    },
+    "live_numeric_verification": {
+      "status": "passed",
+      "method": "independent recomputation from input CSVs",
+      "scope": "fit fields, lookup fields, gaps, flags, rankings, boundary-note presence, rationale length and caveat presence; not a replacement for an official benchmark evaluator"
+    },
+    "npm_owner_confirmed": {
+      "status": "pending",
+      "reason": "npm whoami returns ENEEDAUTH; final owner/scope not provided"
+    },
+    "license_selected": {
+      "status": "passed",
+      "license": "MIT",
+      "selection": "default for newly implemented plugin code"
+    }
+  },
+  "limitations": [
+    "Only the exact listed Harness release is certified by these local checks.",
+    "Progress recovery does not restore arbitrary Python memory.",
+    "Task code needs an external sandbox when untrusted.",
+    "No broad scientific-quality improvement is established by these tests."
+  ],
+  "verified_at": "2026-11-16T16:15:09.318297+08:00",
+  "runtime_sha256": "1a75385b5bbaa3e85e102ff092d8950725098489d90dc78236bd16fe763fee80"
+}

@@ -1,0 +1,5 @@
+{
+  "taskDomain": "measurement_summary",
+  "taskType": "tutorial",
+  "requiredArtifacts": ["results/summary.json"]
+}

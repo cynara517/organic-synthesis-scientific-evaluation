@@ -1,0 +1,48 @@
+{
+  "name": "dsh-scientific-agent",
+  "version": "0.1.0",
+  "description": "A four-stage scientific workflow with evidence-linked traces, portable core, and a DeepSeek Harness adapter.",
+  "type": "module",
+  "license": "MIT",
+  "main": "./src/plugin.js",
+  "exports": {
+    ".": "./src/plugin.js",
+    "./core": "./src/core.js",
+    "./python-tools": "./src/python-tools.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "src/",
+    "python/",
+    "cordis.patch.yml",
+    "examples/",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "README.zh.md",
+    "LICENSE",
+    "scripts/release-gate.js",
+    "VERIFICATION.json"
+  ],
+  "icon": "./icon.svg",
+  "engines": {
+    "node": ">=24.9.0",
+    "dsh": "^0.2.1-rc.2 || ^0.2.2-rc.1"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "scientific-agent",
+    "scientific-trace",
+    "harbor"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "prepublishOnly": "node scripts/release-gate.js"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

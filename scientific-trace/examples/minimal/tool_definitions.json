@@ -1,0 +1,14 @@
+[
+  {
+    "name": "summarize",
+    "description": "Compute mean and sample standard deviation, write and read back results/summary.json.",
+    "module": "tools",
+    "function_name": "summarize",
+    "parameters": {
+      "type": "object",
+      "properties": {"values": {"type": "array", "items": {"type": "number"}}},
+      "required": ["values"],
+      "additionalProperties": false
+    }
+  }
+]

@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Scientific Trace",
+    "description": "Adds scientific_run: a four-stage scientific workflow with experience planning, structured tool selection, real Python execution, and evidence-linked traces."
+  }
+}

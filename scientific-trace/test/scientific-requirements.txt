@@ -1,0 +1,6 @@
+# Versions used for the private BAT20 numerical checks. Task tools may choose
+# their own scientific environment. These are not npm runtime dependencies.
+numpy==2.5.5
+scipy==1.18.1
+pandas==3.1.1
+harbor==0.26.0

@@ -1,0 +1,23 @@
+{
+  "status": "ready_for_publication",
+  "name": "Scientific Trace",
+  "package_name": "dsh-scientific-agent",
+  "version": "0.1.0",
+  "monorepo": {
+    "project": "organic-synthesis-scientific-evaluation",
+    "module": "scientific-trace",
+    "install_path": "scientific-trace"
+  },
+  "repository": null,
+  "license": "MIT",
+  "category": "Workflow & Automation",
+  "description": "Four-stage scientific workflow with experience planning, structured tool selection, real Python execution, and scientific/ATIF traces.",
+  "compatibility": {
+    "dsh": "^0.2.1-rc.2 || ^0.2.2-rc.1",
+    "tested_platform": "macOS arm64",
+    "node": ">=24.9.0",
+    "python": ">=3.10",
+    "tested_dsh": "0.2.2-rc.1"
+  },
+  "engines_dsh_range": "^0.2.1-rc.2 || ^0.2.2-rc.1"
+}
