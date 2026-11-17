@@ -1,18 +1,20 @@
 # Organic Synthesis Scientific Evaluation
 
 An evaluation suite for scientific reasoning in organic synthesis. The repository
-holds four modules; only the first is implemented today.
+holds four modules: an implemented scientific workflow plugin, evaluation prompts,
+and two reserved modules.
 
 | Module | Status | Purpose |
 |---|---|---|
 | [`scientific-trace/`](scientific-trace/) | **Implemented** | DeepSeek Harness plugin exposing `scientific_run`: a four-stage scientific workflow with evidence-linked traces. |
 | [`dsr/`](dsr/) | Reserved | Deep synthesis reasoning. Not yet specified. |
-| [`judge/`](judge/) | Reserved | Scoring and adjudication of evaluation runs. Not yet specified. |
+| [`judge/`](judge/) | Prompts available | Separate model-based scoring of answer quality and execution-trace quality. |
 | [`example/`](example/) | Reserved | Worked examples and task fixtures. Not yet specified. |
 
-The three reserved directories contain a placeholder README stating what is known
-and nothing more. They exist so the module layout is fixed before their scope is
-decided.
+The `dsr/` and `example/` directories contain placeholder READMEs so the module
+layout is fixed before their scope is decided. The `judge/` directory contains
+evaluation prompts and usage documentation; an automated evaluator runner is not
+yet implemented.
 
 ## Install the plugin
 
@@ -34,7 +36,9 @@ Configuration is required before the tool runs. See
 
 ## Repository conventions
 
-- Each module is self-contained: its own `package.json`, README, and tests.
+- Each module is self-contained and documents its scope in a README. Executable
+  modules include their own `package.json` and tests; `judge/` currently contains
+  prompts and documentation only.
 - The plugin is the only module published to a package registry, and even it is
   distributed from Git today. The others are not packages yet.
 - Nothing in this repository may contain API keys, task answers, or run artifacts.
