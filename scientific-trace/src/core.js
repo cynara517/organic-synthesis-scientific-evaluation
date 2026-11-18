@@ -37,6 +37,13 @@ async function atomicJson(path, value) {
 }
 
 function count(value) { return Number.isFinite(value) && value >= 0 ? value : 0; }
+// A final answer is a non-empty string or a JSON object (task output contracts
+// such as {"answer": ..., "reasoning": ...} return the object itself).
+export function hasFinalAnswer(d) {
+  const v = d?.final_answer;
+  return (typeof v === 'string' && v.trim() !== '') || (v !== null && typeof v === 'object' && !Array.isArray(v));
+}
+export function answerText(v) { return v == null ? '' : typeof v === 'string' ? v : JSON.stringify(v); }
 function abort(signal) { signal?.throwIfAborted(); }
 
 export async function runScientificAgent(options) {
@@ -87,7 +94,7 @@ export async function runScientificAgent(options) {
     await atomicJson(checkpointPath, {format: 1, taskFingerprint, maxIterations, trace, atif});
     await atomicJson(tracePath, trace);
     await atomicJson(join(logDir, 'trajectory.json'), atif);
-    await writeFile(join(logDir, 'answer.txt'), trace.final_answer ?? '', {mode: 0o600});
+    await writeFile(join(logDir, 'answer.txt'), answerText(trace.final_answer), {mode: 0o600});
   }
   try {
     abort(signal);
@@ -198,14 +205,14 @@ export async function runScientificAgent(options) {
         tool_descriptions: toolDescriptions, step_number: trace.execution_trace.length + 1,
         max_steps: maxIterations, previous_observations: observations});
       const {data, entry, step} = await ask('planning', prompt, d => {
-        if (typeof d.final_answer === 'string' && d.final_answer.trim()) return;
+        if (hasFinalAnswer(d)) return;
         if (!names.has(d.selected_tool)) throw new Error('selected_tool must name an available tool');
         validateArguments(tools.find(t => t.name === d.selected_tool).parameters, d.call_params);
       });
       warnedOfRestart = true;
       const number = trace.execution_trace.length + 1;
       trace.scientific_planning_trace.push({...data, ...entry, step: number});
-      if (typeof data.final_answer === 'string' && data.final_answer.trim()) {
+      if (hasFinalAnswer(data)) {
         for (const relative of requiredArtifacts) {
           const path = resolve(taskDir, relative);
           if (!path.startsWith(resolve(taskDir) + '/') || !relative.endsWith('.json')) throw new Error('Invalid required artifact path');

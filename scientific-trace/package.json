@@ -10,7 +10,8 @@
     "./core": "./src/core.js",
     "./python-tools": "./src/python-tools.js",
     "./locale/*.json": "./locale/*.json",
-    "./icon": "./icon.svg"
+    "./icon": "./icon.svg",
+    "./runner": "./bin/run-scitrace.mjs"
   },
   "files": [
     "src/",
@@ -23,7 +24,11 @@
     "README.zh.md",
     "LICENSE",
     "scripts/release-gate.js",
-    "VERIFICATION.json"
+    "VERIFICATION.json",
+    "bin/",
+    "tasks/",
+    "harbor/",
+    "README.harbor.md"
   ],
   "icon": "./icon.svg",
   "engines": {
@@ -44,5 +49,8 @@
     "bundle": {
       "patch": "./cordis.patch.yml"
     }
+  },
+  "bin": {
+    "run-scitrace": "./bin/run-scitrace.mjs"
   }
 }
