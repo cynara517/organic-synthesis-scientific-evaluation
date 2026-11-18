@@ -27,8 +27,7 @@
     "VERIFICATION.json",
     "bin/",
     "tasks/",
-    "harbor/",
-    "README.harbor.md"
+    "harbor/"
   ],
   "icon": "./icon.svg",
   "engines": {
